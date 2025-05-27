@@ -1,161 +1,75 @@
-/* ===== NAVIGATION PRINCIPALE ===== */
-nav {
-    background-color: #0c3c60;
-    padding: 15px;
+/* ===== CARROUSEL ===== */
+.section-carrousel {
     text-align: center;
+    margin-bottom: 40px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
+.section-carrousel h1 {
+    font-size: 22px;
+    color: #0c3c60;
+    margin-bottom: 15px;
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
-nav a:hover {
-    color: #ffd700;
-}
-
-/* ===== FOOTER ===== */
-#footer {
-    background-color: #0c3c60;
-    color: white;
-    text-align: center;
-    padding: 20px 15px;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-#footer h4 {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #ffd700;
-}
-
-#footer p {
-    margin: 5px 0;
-    line-height: 1.4;
-}
-
-#footer a {
-    color: #ffd700;
-    text-decoration: none;
-}
-
-#footer a:hover {
-    text-decoration: underline;
-}
-
-
-/* ===== STRUCTURE GÉNÉRALE ===== */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f9f9f9;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-#wrapper {
-    max-width: 1000px;
+.conteneur {
+    width: 100%;
+    max-width: 750px;
     margin: auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-
-/* ===== CARTES DE BIENS ===== */
-.carte {
     border: 1px solid #ccc;
     padding: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    transition: box-shadow 0.3s;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 6px;
 }
 
-.carte:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+#carrousel {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
 }
 
-.carte img {
-    max-width: 150px;
-    height: auto;
+#carrousel ul {
+    padding: 0;
+    margin: 0;
+}
+
+#carrousel ul li {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#carrousel ul li img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
     border-radius: 4px;
+    border: 1px solid #ddd;
 }
 
-.infos {
-    flex: 2;
-    padding-left: 20px;
+.boutons {
+    margin-top: 20px;
 }
 
-.agent {
-    flex: 1;
-    text-align: right;
-    font-size: 14px;
-    color: #444;
-}
-
-/* ===== LIENS GÉNÉRAUX ===== */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* ===== FORMULAIRES ===== */
-form {
-    margin-bottom: 30px;
-}
-
-input[type=text],
-select {
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type=submit] {
-    padding: 8px 16px;
+.boutons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 15px;
     background-color: #0c3c60;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-input[type=submit]:hover {
+.boutons button:hover {
     background-color: #084067;
 }
-
-<style>
-    .fiche-bien {
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid #ccc;
-      padding: 20px;
-    }
-    .fiche-bien img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-    .fiche-bien h1 {
-      margin-bottom: 10px;
-    }
-    .fiche-bien p {
-      margin: 5px 0;
-    }
-  </style>
