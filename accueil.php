@@ -37,10 +37,10 @@ require 'connexion.php'; // Connexion à la BDD (au cas où)
                 <p>Portes ouvertes le samedi 31 mai : venez découvrir nos nouveaux biens à Paris !</p>
             </div>
 
-            <!-- Carrousel (à implémenter plus tard) -->
-            <div id="carrousel">
+            <!-- Carrousel intégré -->
+            <div class="section-carrousel">
                 <h3>Nos biens à découvrir</h3>
-                <p>[Carrousel d’images à venir avec lien vers les propriétés]</p>
+                <?php include 'carrousel.html'; ?>
             </div>
 
         </div>
