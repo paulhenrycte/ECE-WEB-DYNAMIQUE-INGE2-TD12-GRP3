@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 27 mai 2025 à 13:02
+-- Généré le : mar. 27 mai 2025 à 12:33
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `biens_immobiliers` (
   `photos` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   `vendu` tinyint(1) DEFAULT '0',
-  `id_agent` int DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
+  `id_agent` int DEFAULT NULL,
   PRIMARY KEY (`id_bien`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
+  `portable` int NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
   `type_utilisateur` enum('admin','agent','client') NOT NULL,
   `adresse` text,
@@ -85,12 +86,35 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id_user`, `nom`, `prenom`, `email`, `mot_de_passe`, `type_utilisateur`, `adresse`, `info_financieres`, `photo_profil`) VALUES
-(1, 'Martin', 'Lucie', 'lucie.martin@omnes.fr', '$2y$10$motdepasseadminhashé', 'admin', NULL, NULL, 'images/admin_lucie.jpg'),
-(2, 'Durand', 'Paul', 'paul.durand@omnes.fr', '$2y$10$motdepasseagenthashé', 'agent', NULL, NULL, 'images/agent_paul.jpg'),
-(3, 'Bernard', 'Emma', 'emma.bernard@omnes.fr', '$2y$10$motdepasseclienthashé', 'client', '18 rue des Cerisiers, Lyon', 'Carte Visa x-1234', 'images/client_emma.jpg');
+INSERT INTO `utilisateurs` (`id_user`, `nom`, `prenom`, `email`, `portable`, `mot_de_passe`, `type_utilisateur`, `adresse`, `info_financieres`, `photo_profil`) VALUES
+(1, 'Martin', 'Lucie', 'lucie.martin@omnes.fr', 0, 'a', 'admin', NULL, NULL, 'images/admin_lucie.jpg'),
+(2, 'Durand', 'Paul', 'paul.durand@omnes.fr', 0, 'b', 'agent', NULL, NULL, 'images/agent_paul.jpg'),
+(3, 'Bernard', 'Emma', 'emma.bernard@omnes.fr', 0, 'c', 'client', '18 rue des Cerisiers, Lyon', 'Carte Visa x-1234', 'images/client_emma.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+-- Table `messages` avec id_bien
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id_message` INT NOT NULL AUTO_INCREMENT,
+  `id_expediteur` INT NOT NULL,
+  `id_destinataire` INT NOT NULL,
+  `id_bien` INT NOT NULL,
+  `contenu` TEXT NOT NULL,
+  `date_envoi` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_message`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `messages` (`id_message`, `id_expediteur`, `id_destinataire`, `id_bien`, `contenu`, `date_envoi`) VALUES
+(1, 3, 2, 1, 'Bonjour, je suis intéressée par l’appartement à Lyon.', '2025-05-01 09:00:00'),
+(2, 2, 3, 1, 'Bonjour Emma, je peux vous proposer une visite mercredi.', '2025-05-01 09:15:00'),
+(3, 3, 2, 1, 'Parfait, mercredi 15h me va très bien.', '2025-05-01 09:18:00'),
+(4, 2, 3, 1, 'Super, je vous envoie l’adresse par email.', '2025-05-01 09:20:00');
+
+COMMIT;
