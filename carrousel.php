@@ -9,7 +9,6 @@ $res = mysqli_query($conn, $sql);
 ?>
 
 <!-- Carrousel dynamique avec affichage aléatoire -->
-<h1> Une belle France </h1>
 <div class="conteneur">
     <div id="carrousel">
         <ul>
