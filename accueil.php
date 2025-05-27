@@ -11,16 +11,10 @@ require 'connexion.php'; // Connexion à la BDD (au cas où)
 </head>
 <body>
 
+     <!-- NAVIGATION -->
+    <?php include 'navigation.php'; ?>
+    
     <div id="wrapper">
-
-        <!-- HEADER -->
-        <div id="header">
-            <h1>Omnes Immobilier</h1>
-            <!-- Logo possible ici plus tard -->
-        </div>
-
-        <!-- NAVIGATION -->
-        <?php include 'navigation.php'; ?>
 
         <!-- SECTION PRINCIPALE -->
         <div id="section">
