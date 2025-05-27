@@ -40,7 +40,7 @@ require 'connexion.php'; // Connexion à la BDD (au cas où)
             <!-- Carrousel intégré -->
             <div class="section-carrousel">
                 <h3>Nos biens à découvrir</h3>
-                <?php include 'carrousel.html'; ?>
+                <?php include 'carrousel.php'; ?>
             </div>
 
         </div>
