@@ -1,29 +1,39 @@
 <?php
+session_start();
 $database = "omnes_immobilier";
 $port = 8889;
 $mysqli = new mysqli("localhost", "root", "root", $database, $port);
 
-// ID de l'agent depuis l'URL
 $id_agent = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($id_agent <= 0) {
     die("ID agent invalide.");
 }
+
+$id_client = $_SESSION['id_user'] ?? null;
+$type_utilisateur = $_SESSION['type_utilisateur'] ?? null;
 
 // Réservation ou libération d'un créneau
 if (isset($_GET['toggle']) && isset($_GET['date']) && isset($_GET['heure'])) {
     $date = $mysqli->real_escape_string($_GET['date']);
     $heure = $mysqli->real_escape_string($_GET['heure']);
 
-    $check = $mysqli->query("SELECT disponible FROM disponibilites_creneaux WHERE id_user = $id_agent AND date = '$date' AND heure = '$heure'")->fetch_assoc();
+    if (!$id_client || $type_utilisateur != 'client') {
+        die("Seuls les clients peuvent réserver un créneau.");
+    }
+
+    $check = $mysqli->query("SELECT disponible, pris_par FROM disponibilites_creneaux WHERE id_user = $id_agent AND date = '$date' AND heure = '$heure'")->fetch_assoc();
     if ($check) {
         $new_val = $check['disponible'] ? 0 : 1;
-        $mysqli->query("UPDATE disponibilites_creneaux SET disponible = $new_val, pris_par = " . ($new_val ? "NULL" : "999") . " WHERE id_user = $id_agent AND date = '$date' AND heure = '$heure'");
+        $pris_par = $new_val ? "NULL" : $id_client;
+
+        $mysqli->query("UPDATE disponibilites_creneaux 
+            SET disponible = $new_val, pris_par = $pris_par 
+            WHERE id_user = $id_agent AND date = '$date' AND heure = '$heure'");
     }
     header("Location: rdv_creneaux.php?id=$id_agent");
     exit();
 }
 
-// Récupération des créneaux par jour
 $semaine = [];
 $jours = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 $aujourdhui = new DateTime();
@@ -55,9 +65,11 @@ for ($i = 0; $i < 6; $i++) {
         table { border-collapse: collapse; width: 100%; text-align: center; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         th, td { border: 1px solid #ddd; padding: 10px; }
         th { background-color: #f0f0f0; font-weight: bold; }
-        td.dispo a { background-color: #e0ffe0; color: #006600; padding: 5px 10px; border-radius: 5px; text-decoration: none; }
-        td.occupe { background-color: #007BFF; color: white; border-radius: 5px; }
+        td.dispo a { background-color: #e0ffe0; color: #006600; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: inline-block; }
+        td.occupe a { background-color: #007BFF; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: inline-block; }
         td.dispo a:hover { background-color: #c0f0c0; }
+        .btn-retour { display: inline-block; background: #6c757d; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; transition: background 0.3s ease; }
+        .btn-retour:hover { background: #5a6268; }
     </style>
 </head>
 <body>
@@ -91,7 +103,7 @@ for ($i = 0; $i < 6; $i++) {
                         if ($c['disponible']) {
                             echo "<td class='dispo'><a href='?id=$id_agent&toggle=1&date={$infos['date']}&heure={$c['heure']}'>Disponible</a></td>";
                         } else {
-                            echo "<td class='occupe'><a style='color:white;' href='?id=$id_agent&toggle=1&date={$infos['date']}&heure={$c['heure']}'>Occupé</a></td>";
+                            echo "<td class='occupe'><a href='?id=$id_agent&toggle=1&date={$infos['date']}&heure={$c['heure']}'>Occupé</a></td>";
                         }
                         break;
                     }
@@ -103,7 +115,7 @@ for ($i = 0; $i < 6; $i++) {
         ?>
     </table>
     <div style="text-align:center; margin-top: 20px;">
-    <a href="agent.php?id=<?php echo $id_agent; ?>" class="btn-retour">← Retour au profil de l'agent</a>
-</div>
+        <a href="agent.php?id=<?php echo $id_agent; ?>" class="btn-retour">Retour au profil de l'agent</a>
+    </div>
 </body>
 </html>
