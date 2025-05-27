@@ -159,79 +159,89 @@ input[type=submit]:hover {
 }
 
 /* ===== CARROUSEL ===== */
-.section-carrousel {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-carrousel h1 {
-    font-size: 22px;
-    color: navy;
-    margin-bottom: 15px;
-    background-color: aliceblue;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid gray;
-}
-
-.conteneur {
-    width: 100%;
-    max-width: 750px;
-    margin: auto;
-    border: 1px solid gray;
-    padding: 15px;
-    background-color: white;
-    box-shadow: 0 0 10px lightgray;
-    border-radius: 6px;
-}
-
 #carrousel {
     position: relative;
     height: 400px;
     width: 100%;
     max-width: 700px;
     margin: auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
-#carrousel ul {
-    padding: 0;
-    margin: 0;
+.carrousel-titre {
+    text-align: center;
+    font-size: 26px;
+    color: #0c3c60;
+    margin-bottom: 20px;
 }
 
-#carrousel ul li {
-    list-style: none;
+#carrousel img {
     position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-
-#carrousel ul li img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid lightgray;
+    display: none;
+    border-radius: 6px;
 }
 
-.boutons {
-    margin-top: 20px;
+.controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
-.boutons button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 15px;
-    background-color: navy;
+.controls button {
+    background-color: rgba(12, 60, 96, 0.8);
     color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
 
-.boutons button:hover {
-    background-color: darkblue;
+.controls button:hover {
+    transform: scale(1.1);
+    background-color: #084067;
+}
+
+#miniature {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+#miniature img {
+    width: 100px;
+    height: 60px;
+    margin: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: transform 0.3s, opacity 0.3s;
+    border: 2px solid #0c3c60;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+#miniature img:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+#miniature img.active {
+    opacity: 1;
+    border: 2px solid #ffd700;
 }
 
 /* ===== CATEGORIES ===== */
