@@ -45,14 +45,7 @@ require 'connexion.php'; // Connexion à la BDD (au cas où)
 
         </div>
 
-            <!-- Google Map (à implémenter plus tard) -->
-            <div id="map">
-                <p>[Carte Google Maps à insérer]</p>
-            </div>
-
-        </div>
-
-
+        <?php include("maps.php"); ?>
     </div>
     <?php include 'footer.php'; ?>
 
