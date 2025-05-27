@@ -313,3 +313,13 @@ input[type=submit]:hover {
 .filtres-container input[type="submit"]:hover {
     background-color: darkblue;
 }
+/* ===== MAPS ===== */
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 30px auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
