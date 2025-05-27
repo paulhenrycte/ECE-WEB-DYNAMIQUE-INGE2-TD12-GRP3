@@ -102,5 +102,8 @@ for ($i = 0; $i < 6; $i++) {
         }
         ?>
     </table>
+    <div style="text-align:center; margin-top: 20px;">
+    <a href="agent.php?id=<?php echo $id_agent; ?>" class="btn-retour">← Retour au profil de l'agent</a>
+</div>
 </body>
 </html>
