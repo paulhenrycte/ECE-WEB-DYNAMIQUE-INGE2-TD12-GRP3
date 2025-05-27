@@ -1,6 +1,22 @@
-/* ===== NAVIGATION PRINCIPALE ===== */
+/* ===== STRUCTURE GÉNÉRALE ===== */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+}
+
+#wrapper {
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px lightgray;
+}
+
+/* ===== NAVIGATION ===== */
 nav {
-    background-color: #0c3c60;
+    background-color: navy;
     padding: 15px;
     text-align: center;
 }
@@ -15,12 +31,12 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffd700;
+    color: gold;
 }
 
 /* ===== FOOTER ===== */
 #footer {
-    background-color: #0c3c60;
+    background-color: navy;
     color: white;
     text-align: center;
     padding: 20px 15px;
@@ -31,7 +47,7 @@ nav a:hover {
 #footer h4 {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #ffd700;
+    color: gold;
 }
 
 #footer p {
@@ -40,66 +56,12 @@ nav a:hover {
 }
 
 #footer a {
-    color: #ffd700;
+    color: gold;
     text-decoration: none;
 }
 
 #footer a:hover {
     text-decoration: underline;
-}
-
-/* ===== STRUCTURE GÉNÉRALE ===== */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f9f9f9;
-    margin: 0;
-}
-
-#wrapper {
-    max-width: 1000px;
-    margin: auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-/* ===== CARTES DE BIENS ===== */
-.carte {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    transition: box-shadow 0.3s;
-}
-
-.carte:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.carte img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 4px;
-}
-
-.infos {
-    flex: 2;
-    padding-left: 20px;
-}
-
-.agent {
-    flex: 1;
-    text-align: right;
-    font-size: 14px;
-    color: #444;
 }
 
 /* ===== LIENS GÉNÉRAUX ===== */
@@ -119,13 +81,13 @@ select {
     margin-top: 5px;
     margin-bottom: 10px;
     width: 250px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     border-radius: 4px;
 }
 
 input[type=submit] {
     padding: 8px 16px;
-    background-color: #0c3c60;
+    background-color: navy;
     color: white;
     border: none;
     border-radius: 4px;
@@ -134,25 +96,62 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #084067;
+    background-color: darkblue;
+}
+
+/* ===== CARTES DE BIENS ===== */
+.carte {
+    border: 1px solid gray;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    transition: box-shadow 0.3s;
+}
+
+.carte:hover {
+    box-shadow: 0 0 10px silver;
+}
+
+.carte img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.infos {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.agent {
+    flex: 1;
+    text-align: right;
+    font-size: 14px;
+    color: dimgray;
 }
 
 /* ===== FICHE BIEN ===== */
 .fiche-bien {
     max-width: 800px;
     margin: auto;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     padding: 20px;
+    background-color: white;
 }
 
 .fiche-bien img {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .fiche-bien h1 {
     margin-bottom: 10px;
+    color: navy;
 }
 
 .fiche-bien p {
@@ -167,22 +166,22 @@ input[type=submit]:hover {
 
 .section-carrousel h1 {
     font-size: 22px;
-    color: #0c3c60;
+    color: navy;
     margin-bottom: 15px;
-    background-color: #f0f8ff;
+    background-color: aliceblue;
     padding: 10px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
 }
 
 .conteneur {
     width: 100%;
     max-width: 750px;
     margin: auto;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     padding: 15px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: 0 0 10px lightgray;
     border-radius: 6px;
 }
 
@@ -212,7 +211,7 @@ input[type=submit]:hover {
     height: 400px;
     object-fit: cover;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid lightgray;
 }
 
 .boutons {
@@ -223,7 +222,7 @@ input[type=submit]:hover {
     margin: 0 10px;
     padding: 10px 20px;
     font-size: 15px;
-    background-color: #0c3c60;
+    background-color: navy;
     color: white;
     border: none;
     border-radius: 4px;
@@ -232,5 +231,75 @@ input[type=submit]:hover {
 }
 
 .boutons button:hover {
-    background-color: #084067;
+    background-color: darkblue;
+}
+
+/* ===== CATEGORIES ===== */
+.categories {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.categories a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    background-color: navy;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.categories a:hover {
+    background-color: darkblue;
+}
+
+/* ===== FILTRES ===== */
+.filtres-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.filtres-container form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 5px lightgray;
+}
+
+.filtres-container label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.filtres-container select,
+.filtres-container input[type="text"] {
+    padding: 7px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+.filtres-container input[type="submit"] {
+    padding: 8px 18px;
+    background-color: navy;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filtres-container input[type="submit"]:hover {
+    background-color: darkblue;
 }
