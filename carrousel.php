@@ -4,58 +4,92 @@ if (!$conn) {
     die("Erreur de connexion : " . mysqli_connect_error());
 }
 
-$sql = "SELECT photos FROM biens_immobiliers ORDER BY RAND()";
+// Récupération des images depuis la BDD
+$sql = "SELECT id_bien, photos FROM biens_immobiliers ORDER BY RAND()";
 $res = mysqli_query($conn, $sql);
+
+$images = [];
+while ($row = mysqli_fetch_assoc($res)) {
+    $images[] = [
+        'src' => htmlspecialchars($row['photos']),
+        'id' => $row['id_bien']
+    ];
+}
 ?>
 
-<!-- Carrousel dynamique avec affichage aléatoire -->
-<div class="conteneur">
-    <div id="carrousel">
-        <ul>
-            <?php
-            while ($row = mysqli_fetch_assoc($res)) {
-                echo "<li><img src='" . htmlspecialchars($row['photos']) . "' width='700' height='400'></li>";
-            }
-            ?>
-        </ul>
-    </div>
-
-    <div class="boutons">
-        <button id="precedent">Précédent</button>
-        <button id="suivant">Suivant</button>
+<!-- Carrousel avec miniatures -->
+<h1 class="carrousel-titre">Nos biens à découvrir</h1>
+<div id="carrousel">
+    <?php foreach ($images as $index => $img): ?>
+        <a href="bien.php?id=<?= $img['id'] ?>">
+            <img src="<?= $img['src'] ?>" alt="Bien <?= $img['id'] ?>" style="<?= $index === 0 ? 'display: block;' : '' ?>">
+        </a>
+    <?php endforeach; ?>
+    <div class="controls">
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
     </div>
 </div>
 
+<div id="miniature">
+    <?php foreach ($images as $index => $img): ?>
+        <img src="<?= $img['src'] ?>" alt="Mini <?= $img['id'] ?>" class="thumbnail <?= $index === 0 ? 'active' : '' ?>">
+    <?php endforeach; ?>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        let index = 0;
-        const images = $("#carrousel ul li");
-        const total = images.length;
+    $(document).ready(function() {
+        let currentIndex = 0;
+        const images = $('#carrousel img');
+        const thumbnails = $('#miniature img');
+        const imageCount = images.length;
+        let interval;
 
-        images.hide();
-        images.eq(index).show();
-
-        function maBoucle() {
-            setTimeout(function() {
-                images.eq(index).hide();
-                index = (index + 1) % total;
-                images.eq(index).show();
-                maBoucle();
-            }, 3000);
+        function showImage(index) {
+            images.hide();
+            images.eq(index).show();
+            thumbnails.removeClass('active');
+            thumbnails.eq(index).addClass('active');
         }
 
-        maBoucle();
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % imageCount;
+            showImage(currentIndex);
+        }
 
-        $("#suivant").click(function() {
-            images.eq(index).hide();
-            index = (index + 1) % total;
-            images.eq(index).show();
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+            showImage(currentIndex);
+        }
+
+        function startCarousel() {
+            interval = setInterval(nextImage, 4000);
+        }
+
+        function stopCarousel() {
+            clearInterval(interval);
+        }
+
+        $('#next').click(function() {
+            stopCarousel();
+            nextImage();
+            startCarousel();
         });
 
-        $("#precedent").click(function() {
-            images.eq(index).hide();
-            index = (index - 1 + total) % total;
-            images.eq(index).show();
+        $('#prev').click(function() {
+            stopCarousel();
+            prevImage();
+            startCarousel();
         });
+
+        thumbnails.click(function() {
+            stopCarousel();
+            currentIndex = thumbnails.index(this);
+            showImage(currentIndex);
+            startCarousel();
+        });
+
+        startCarousel();
     });
 </script>
