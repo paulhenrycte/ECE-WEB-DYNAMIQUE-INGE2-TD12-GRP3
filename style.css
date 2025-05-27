@@ -1,0 +1,161 @@
+/* ===== NAVIGATION PRINCIPALE ===== */
+nav {
+    background-color: #0c3c60;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* ===== FOOTER ===== */
+#footer {
+    background-color: #0c3c60;
+    color: white;
+    text-align: center;
+    padding: 20px 15px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#footer h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ffd700;
+}
+
+#footer p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+#footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ===== STRUCTURE GÉNÉRALE ===== */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#wrapper {
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+
+/* ===== CARTES DE BIENS ===== */
+.carte {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
+}
+
+.carte:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.carte img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.infos {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.agent {
+    flex: 1;
+    text-align: right;
+    font-size: 14px;
+    color: #444;
+}
+
+/* ===== LIENS GÉNÉRAUX ===== */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== FORMULAIRES ===== */
+form {
+    margin-bottom: 30px;
+}
+
+input[type=text],
+select {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    padding: 8px 16px;
+    background-color: #0c3c60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type=submit]:hover {
+    background-color: #084067;
+}
+
+<style>
+    .fiche-bien {
+      max-width: 800px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    .fiche-bien img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .fiche-bien h1 {
+      margin-bottom: 10px;
+    }
+    .fiche-bien p {
+      margin: 5px 0;
+    }
+  </style>
