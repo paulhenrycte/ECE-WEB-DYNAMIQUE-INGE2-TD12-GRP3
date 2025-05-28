@@ -1,8 +1,7 @@
 <?php
 session_start();
 $database = "omnes_immobilier";
-$port = 8889;
-$mysqli = new mysqli("localhost", "root", "root", $database, $port);
+$mysqli = new mysqli("localhost", "root", "root", $database);
 
 // DEBUG : connexion test client Emma
 $_SESSION['id_user'] = 2;
