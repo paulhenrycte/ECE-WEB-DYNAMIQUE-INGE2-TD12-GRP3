@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$database = "home";
+$database = "omnes_immobilier";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
@@ -83,14 +83,91 @@ if ($db_found) {
             box-sizing: border-box;
         }
         input[type="submit"] {
-            background-color: seagreen;
+            background-color: #77B5FE;
             color: white;
             cursor: pointer;
             border: none;
         }
+        /* ===== HEADER AVEC LOGO ===== */
+#header {
+    padding: 20px 0;
+    border-bottom: 2px solid lightgray;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header-container .logo {
+    position: absolute;
+    left: 0;
+    width: 70px;
+    margin-left: 20px;
+}
+
+.header-container h1 {
+    font-size: 32px;
+    color: navy;
+    margin: 0;
+}
+
+
+/* ===== NAVIGATION ===== */
+nav {
+    background-color: navy;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: gold;
+}
+
+/* ===== FOOTER ===== */
+#footer {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 20px 15px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#footer h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: gold;
+}
+
+#footer p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+#footer a {
+    color: gold;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
     </style>
 </head>
 <body>
+     <?php include 'navigation.php'; ?>
+    <div id="wrapper">
     <h1>Modifier mes informations</h1>
     <form method="post" action="">
         <label>Nom :</label>
@@ -113,5 +190,7 @@ if ($db_found) {
 
         <input type="submit" value="Enregistrer les modifications">
     </form>
+       </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

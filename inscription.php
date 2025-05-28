@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$database = "home";
+$database = "omnes_immobilier";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
