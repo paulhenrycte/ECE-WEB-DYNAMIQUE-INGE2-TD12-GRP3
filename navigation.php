@@ -1,3 +1,10 @@
+<div id="header">
+    <div class="header-container">
+        <img src="images/OmnesImmobilier-logo.png" alt="Logo Omnes Immobilier" class="logo">
+        <h1>Omnes Immobilier</h1>
+    </div>
+</div>
+
 <nav>
     <a href="accueil.php">Accueil</a> |
     <a href="tout_parcourir.php">Tout Parcourir</a> |
