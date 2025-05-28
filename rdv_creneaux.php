@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+// DEBUG : connexion test client Emma
+$_SESSION['id_user'] = 3;
+$_SESSION['type_utilisateur'] = 'client';
+
 $database = "omnes_immobilier";
 $port = 8889;
 $mysqli = new mysqli("localhost", "root", "root", $database, $port);
