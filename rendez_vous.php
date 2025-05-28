@@ -4,8 +4,8 @@ $database = "omnes_immobilier";
 $mysqli = new mysqli("localhost", "root", "root", $database);
 
 // DEBUG : connexion test client Emma
-$_SESSION['id_user'] = 2;
-$_SESSION['type_utilisateur'] = 'agent';
+$_SESSION['id_user'] = 3;
+$_SESSION['type_utilisateur'] = 'client';
 
 $id_user = $_SESSION['id_user'] ?? null;
 $type_utilisateur = $_SESSION['type_utilisateur'] ?? null;
